@@ -1,0 +1,18 @@
+{
+  "name": "practice-02-docker-volume",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "remove-dangling-images": "docker rmi $(docker images -qa -f \"dangling=true\")",
+    "build": "npm run remove-dangling-images && docker build -t practice-02 .",
+    "start": "npm run build && docker run -d --name practice-02 --rm -v $(pwd)/src:/app/src practice-02 && npm run logs",
+    "logs": "docker logs practice-02 -f",
+    "stop": "docker stop practice-02"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^1.18.8"
+  }
+}
