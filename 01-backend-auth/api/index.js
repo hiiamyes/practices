@@ -10,6 +10,7 @@ redisClient = redis.createClient();
 app.use(bodyParser.json());
 
 app.post("/signup", (req, res) => {
+  console.log("signup");
   const { username, password } = req.body;
   const key = `users:${username}`;
   redisClient.hgetall(key, (err, user) => {
@@ -27,6 +28,7 @@ app.post("/signup", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
+  console.log("login");
   const { username, password } = req.body;
   const key = `users:${username}`;
   redisClient.hgetall(key, (err, user) => {
