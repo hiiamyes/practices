@@ -1,0 +1,3 @@
+[submodule "06-apollo-server-circleci"]
+	path = 06-apollo-server-circleci
+	url = git@github.com:hiiamyes/06-apollo-server-circleci.git
