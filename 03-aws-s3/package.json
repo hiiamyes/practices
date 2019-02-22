@@ -1,0 +1,19 @@
+{
+  "name": "practice-03-aws-s3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "remove-dangling-images": "docker rmi $(docker images -qa -f \"dangling=true\")",
+    "build": "npm run remove-dangling-images && docker build -t practice-03 .",
+    "start": "npm run build && docker run -d --name practice-03 --rm -v $(pwd)/src:/app/src practice-03 && npm run logs",
+    "logs": "docker logs practice-03 -f",
+    "stop": "docker stop practice-03"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.395.0",
+    "dotenv": "^6.2.0"
+  }
+}
