@@ -1,0 +1,13 @@
+{
+  "name": "08-apollo-server-crud",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "apollo-server": "^2.4.6",
+    "graphql": "^14.1.1",
+    "lodash": "^4.17.11",
+    "nodemon": "^1.18.10"
+  }
+}
