@@ -1,0 +1,18 @@
+version: "3"
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/app/src
+  postgres:
+    image: postgres:latest
+    volumes:
+      - ~/postgresql/practice-08/data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: "yes"
+      POSTGRES_PASSWORD: "yes"
+      POSTGRES_DB: "practice-08"
