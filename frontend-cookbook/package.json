@@ -1,0 +1,21 @@
+{
+  "name": "frontend-cookbook",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "styled-components": "^4.2.0"
+  },
+  "devDependencies": {
+    "@storybook/react": "^5.0.11",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-links": "^5.0.11",
+    "@storybook/addons": "^5.0.11",
+    "@babel/core": "^7.4.5",
+    "babel-loader": "^8.0.6"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  }
+}

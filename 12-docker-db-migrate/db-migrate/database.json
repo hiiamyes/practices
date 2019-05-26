@@ -1,0 +1,10 @@
+{
+  "dev": {
+    "driver": "pg",
+    "user": "yes",
+    "password": "yes",
+    "host": "db",
+    "port": 5432,
+    "database": "paaaack"
+  }
+}

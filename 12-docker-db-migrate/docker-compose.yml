@@ -1,0 +1,11 @@
+version: "3"
+services:
+  db:
+    image: postgres:latest
+    env_file: .env
+  db-migrate:
+    build: ./db-migrate
+    volumes:
+      - ./db-migrate/migrations:/app/migrations
+    depends_on:
+      - db
