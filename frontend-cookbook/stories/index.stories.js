@@ -5,6 +5,7 @@ import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 
 import { Welcome } from "@storybook/react/demo";
+import FAIcon from "../components/FAIcon";
 import styled from "styled-components";
 
 const Button = styled.button`
@@ -20,6 +21,8 @@ const Button = styled.button`
 storiesOf("Welcome", module).add("to Storybook", () => (
   <Welcome showApp={linkTo("Button")} />
 ));
+
+storiesOf("Icon", module).add("FontAwesomeIcon", () => <FAIcon icon="cog" />);
 
 storiesOf("Button", module)
   .add("with text", () => (
