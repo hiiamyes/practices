@@ -1,0 +1,9 @@
+{
+  "name": "14-3d-map",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "cesium": "^1.57.0"
+  }
+}
