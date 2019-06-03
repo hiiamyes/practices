@@ -6,7 +6,9 @@ import { linkTo } from "@storybook/addon-links";
 
 import { Welcome } from "@storybook/react/demo";
 import FAIcon from "../components/FAIcon";
+import TimezoneNameSelect from "../components/TimezoneNameSelect";
 import styled from "styled-components";
+import "antd/dist/antd.css";
 
 const Button = styled.button`
   min-width: 64px;
@@ -18,8 +20,17 @@ const Button = styled.button`
   text-align: center;
 `;
 
+const Layout = styled.div`
+  padding: 15px;
+`;
 storiesOf("Welcome", module).add("to Storybook", () => (
   <Welcome showApp={linkTo("Button")} />
+));
+
+storiesOf("Select", module).add("TimezoneNameSelect", () => (
+  <Layout>
+    <TimezoneNameSelect />
+  </Layout>
 ));
 
 storiesOf("Icon", module).add("FontAwesomeIcon", () => <FAIcon icon="cog" />);
