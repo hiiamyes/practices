@@ -1,0 +1,1 @@
+https://practices-bc-01.s3.ap-northeast-1.amazonaws.com/test.jpg?AWSAccessKeyId=AKIAXQN5DOMFBQJ3MTWB&Content-Type=image%2Fjpeg&Expires=1560079836&Signature=iFOiBGcBmMqjJTWusFM1lFimtyk%3D&x-amz-acl=public-read

@@ -1,0 +1,13 @@
+{
+  "name": "practices-bc-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/create-url.js && ./src/upload.sh"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.395.0",
+    "dotenv": "^6.2.0"
+  }
+}
