@@ -12,7 +12,3 @@ var params = {
 };
 var url = s3.getSignedUrl("putObject", params);
 console.log(url);
-
-// s3.getSignedUrl("putObject", params, function(err, url) {
-//   console.log("The put URL is", url);
-// });
