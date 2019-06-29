@@ -6,6 +6,7 @@ import { linkTo } from "@storybook/addon-links";
 
 import { Welcome } from "@storybook/react/demo";
 import FAIcon from "../components/FAIcon";
+import BasicSelect from "../components/Select/BasicSelect";
 import TimezoneNameSelect from "../components/TimezoneNameSelect";
 import AntdModal from "../components/Modal/AntdModal";
 import styled from "styled-components";
@@ -28,11 +29,17 @@ storiesOf("Welcome", module).add("to Storybook", () => (
   <Welcome showApp={linkTo("Button")} />
 ));
 
-storiesOf("Select", module).add("TimezoneNameSelect", () => (
-  <Layout>
-    <TimezoneNameSelect />
-  </Layout>
-));
+storiesOf("Select", module)
+  .add("BasicSelect", () => (
+    <Layout>
+      <BasicSelect />
+    </Layout>
+  ))
+  .add("TimezoneNameSelect", () => (
+    <Layout>
+      <TimezoneNameSelect />
+    </Layout>
+  ));
 
 storiesOf("Modal", module).add("Antd Modal", () => (
   <Layout>
