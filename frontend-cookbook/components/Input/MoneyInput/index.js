@@ -121,9 +121,9 @@ const MoneyInput = props => {
   );
 };
 
-const Demo = () => {
-  // const [value, setValue] = useState(null);
-  const [value, setValue] = useState(1234);
+const MoneyInputDemo = () => {
+  const [value, setValue] = useState(null);
+  // const [value, setValue] = useState(1234);
   return (
     <div>
       <MoneyInput
@@ -138,4 +138,5 @@ const Demo = () => {
   );
 };
 
-export default Demo;
+export default MoneyInput;
+export { MoneyInputDemo };

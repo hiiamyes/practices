@@ -11,7 +11,7 @@ import FAIcon from "../components/FAIcon";
 import BasicSelect from "../components/Select/BasicSelect";
 import TimezoneNameSelect from "../components/TimezoneNameSelect";
 import AntdModal from "../components/Modal/AntdModal";
-import MoneyInput from "../components/Input/MoneyInput";
+import { MoneyInputDemo } from "../components/Input/MoneyInput";
 
 const Button = styled.button`
   min-width: 64px;
@@ -44,7 +44,7 @@ storiesOf("Select", module)
 
 storiesOf("Input", module).add("MoneyInput", () => (
   <Layout>
-    <MoneyInput />
+    <MoneyInputDemo />
   </Layout>
 ));
 
