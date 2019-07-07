@@ -3,14 +3,15 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
-
 import { Welcome } from "@storybook/react/demo";
+import styled from "styled-components";
+import "antd/dist/antd.css";
+
 import FAIcon from "../components/FAIcon";
 import BasicSelect from "../components/Select/BasicSelect";
 import TimezoneNameSelect from "../components/TimezoneNameSelect";
 import AntdModal from "../components/Modal/AntdModal";
-import styled from "styled-components";
-import "antd/dist/antd.css";
+import MoneyInput from "../components/Input/MoneyInput";
 
 const Button = styled.button`
   min-width: 64px;
@@ -40,6 +41,12 @@ storiesOf("Select", module)
       <TimezoneNameSelect />
     </Layout>
   ));
+
+storiesOf("Input", module).add("MoneyInput", () => (
+  <Layout>
+    <MoneyInput />
+  </Layout>
+));
 
 storiesOf("Modal", module).add("Antd Modal", () => (
   <Layout>
