@@ -11,15 +11,6 @@ const getFormattedValue = ({ value, minUnit }) => {
   value = String(value);
   if (value === "0") return 0;
   if (minUnit >= 1) {
-    // if (numeral(value).value() < minUnit) {
-    //   value = String(numeral(value).value() * minUnit);
-    // }
-    // return numeral(
-    //   new Decimal(numeral(value).value())
-    //     .dividedBy(minUnit)
-    //     .round()
-    //     .times(minUnit)
-    // ).format("0,0");
     return numeral(value).format("0,0");
   } else {
     const fixed = minUnit.length - 2;
@@ -77,9 +68,6 @@ const MoneyInput = props => {
           charAfterCaret = value.split("")[selectionStart];
           // We can't get keyCode from the change event
           keyCode = e.keyCode;
-          // console.log(caretPositionFromEnd);
-          // caretPositionFromEnd = 2;
-          // forceUpdate();
         }}
         onChange={e => {
           let {
@@ -116,34 +104,13 @@ const MoneyInput = props => {
               newValue = String(value);
               forceUpdate();
             } else {
-              console.log("qq: ", newValue);
               newValue = new Decimal(numeral(newValue).value())
                 .dividedBy(minUnit)
                 .round()
                 .times(minUnit)
                 .toString();
             }
-
-            // if(numeral(newValue).value() < minUnit){
-            // }
-            // newValue = String(
-            //   new Decimal(numeral(newValue).value())
-            //     .dividedBy(minUnit)
-            //     .round()
-            //     .times(minUnit)
-            // );
-            //   if (!value) {
-            //     caretPositionFromEnd = minUnit.length - 1;
-            //     newValue = String(numeral(newValue).value() * minUnit);
-            //   } else if (caretPositionFromEnd < minUnit.length - 1) {
-            //     caretPositionFromEnd = minUnit.length - 1;
-            //     newValue = String(value);
-            //     forceUpdate();
-            //   } else if (numeral(newValue).value() < minUnit) {
-            //     newValue = null;
-            //   }
           }
-          console.log(newValue);
           newValue = getFormattedValue({ value: newValue, minUnit });
           setFormattedValue(newValue);
           if (numeral(newValue).value() !== value) {
