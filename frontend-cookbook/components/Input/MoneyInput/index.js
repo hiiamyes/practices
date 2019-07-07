@@ -11,7 +11,12 @@ const getFormattedValue = ({ value, minUnit }) => {
   value = String(value);
   if (value === "0") return 0;
   if (minUnit >= 1) {
-    return numeral(value).format("0,0");
+    return numeral(
+      new Decimal(numeral(value).value())
+        .dividedBy(minUnit)
+        .round()
+        .times(minUnit)
+    ).format("0,0");
   } else {
     const fixed = minUnit.length - 2;
     const decimalPoint = ".";
@@ -103,12 +108,6 @@ const MoneyInput = props => {
               caretPositionFromEnd = minUnit.length - 1;
               newValue = String(value);
               forceUpdate();
-            } else {
-              newValue = new Decimal(numeral(newValue).value())
-                .dividedBy(minUnit)
-                .round()
-                .times(minUnit)
-                .toString();
             }
           }
           newValue = getFormattedValue({ value: newValue, minUnit });
@@ -123,7 +122,8 @@ const MoneyInput = props => {
 };
 
 const Demo = () => {
-  const [value, setValue] = useState(null);
+  // const [value, setValue] = useState(null);
+  const [value, setValue] = useState(1234);
   return (
     <div>
       <MoneyInput
