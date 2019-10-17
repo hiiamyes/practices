@@ -1,6 +1,6 @@
 docker run \
     -d \
-    --name postgres \
+    --name practice-18-db \
     --rm \
     -e POSTGRES_USER=yes \
     -e POSTGRES_PASSWORD=yes \

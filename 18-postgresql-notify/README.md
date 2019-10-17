@@ -1,6 +1,6 @@
 ```sh
 ./scripts/start.sh
-docker exec -it postgres bash
+docker exec -it practice-18-db bash
 psql -U yes -d practice-18
 ```
 
