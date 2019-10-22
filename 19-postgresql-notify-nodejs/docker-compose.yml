@@ -1,0 +1,12 @@
+version: "3"
+services:
+  backend:
+    build: ./services/backend
+    env_file: ./services/backend/.env
+    volumes:
+      - ./services/backend/src:/app/src
+    depends_on:
+      - database
+  database:
+    build: ./services/database
+    env_file: ./services/database/.env
