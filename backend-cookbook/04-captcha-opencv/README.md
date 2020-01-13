@@ -1,4 +1,14 @@
-#
+# Getting started
+
+Python 3.7.4
+
+```
+pip install opencv-python
+```
+
+```
+python src/split.py
+```
 
 1. OpenCV
 
