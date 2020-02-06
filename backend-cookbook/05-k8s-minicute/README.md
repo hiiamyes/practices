@@ -1,4 +1,3 @@
-
 Start Minikube
 
 ```
@@ -12,10 +11,20 @@ Build images
 ./build.sh
 ```
 
-Deploy 
+Start
 
 ```
-./deploy.sh
+./start.sh
 ```
 
+Port Forward
+
+```
 kubectl port-forward service/api-service 3000
+```
+
+Stop
+
+```
+./stop/sh
+```

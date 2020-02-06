@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
-app.get("/ping", (req, res) => {
+app.get("/", (req, res) => {
   res.json("pong");
 });
 
-app.listen(3000, () => console.log(`API server starts`));
+app.listen(process.env.PORT, () => console.log(`API server starts`));
