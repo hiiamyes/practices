@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: testconfig
 data:
-  PORT: "3001"
+  PORT: "3002"
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -28,7 +28,7 @@ spec:
           imagePullPolicy: Never
           name: api
           ports:
-            - containerPort: 3001
+            - containerPort: 3002
           envFrom:
             - configMapRef:
                 name: testconfig
@@ -45,5 +45,5 @@ spec:
     app: api
   ports:
     - protocol: TCP
-      port: 3001
-      targetPort: 3001
+      port: 3002
+      targetPort: 3002

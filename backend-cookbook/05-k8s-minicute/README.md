@@ -20,7 +20,14 @@ Start
 Port Forward
 
 ```
-kubectl port-forward service/api-service 3000
+kubectl port-forward service/api-service 3002
+open http://localhost:3002
+```
+
+Log
+
+```
+kubectl logs api-deployment-7f86877d4d-cr8g8
 ```
 
 Stop
