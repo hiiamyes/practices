@@ -53089,30 +53089,44 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var App = function App() {
   Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(function () {
     console.log("init");
-    var dls = document.querySelectorAll(".results dl");
-    Array.prototype.forEach.call(dls, function (dl) {
-      var link = dl.querySelector("dt a");
-      var name = link.text;
 
-      var _dl$querySelectorAll = dl.querySelectorAll("dd span"),
-          _dl$querySelectorAll2 = _slicedToArray(_dl$querySelectorAll, 3),
-          _ = _dl$querySelectorAll2[0],
-          date = _dl$querySelectorAll2[1],
-          size = _dl$querySelectorAll2[2];
+    if (location.search !== "") {
+      var type = /f=(\w+)&?/.exec(location.search)[1];
+      var dls = document.querySelectorAll(".results dl");
+      Array.prototype.forEach.call(dls, function (dl) {
+        var link = dl.querySelector("dt a");
+        var name = link.text;
 
-      size = size.textContent;
+        var _dl$querySelectorAll = dl.querySelectorAll("dd span"),
+            _dl$querySelectorAll2 = _slicedToArray(_dl$querySelectorAll, 3),
+            _ = _dl$querySelectorAll2[0],
+            date = _dl$querySelectorAll2[1],
+            size = _dl$querySelectorAll2[2];
 
-      var _size$split = size.split(" "),
-          _size$split2 = _slicedToArray(_size$split, 2),
-          amount = _size$split2[0],
-          unit = _size$split2[1];
+        size = size.textContent;
 
-      if (unit === "MB" && +amount > 5000) {
-        window.open("https://www.s1s1s1.com/works/detail/ssni".concat(/ssni-(\d\d\d)/i.exec(name)[1]));
-        window.open(link.href);
-        console.log(name, link.href, date.textContent, size);
-      }
-    });
+        var _size$split = size.split(" "),
+            _size$split2 = _slicedToArray(_size$split, 2),
+            amount = _size$split2[0],
+            unit = _size$split2[1];
+
+        if (unit === "MB" && +amount > 5000) {
+          if (type === "ssni") {
+            var number = /ssni-(\d\d\d)/i.exec(name)[1];
+            window.open("https://www.s1s1s1.com/works/detail/ssni".concat(number));
+            window.open(link.href);
+          }
+
+          if (type === "abp") {
+            var _number = /abp-(\d\d\d)/i.exec(name)[1];
+            window.open("https://www.prestige-av.com/goods/goods_list.php?q=abp-".concat(_number, "&m=search&p=1&s=date"));
+            window.open(link.href);
+          }
+
+          console.log(name, link.href, date.textContent, size);
+        }
+      });
+    }
   });
   return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null);
 };
