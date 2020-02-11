@@ -9,7 +9,9 @@
     "build:prod": "rm -rf src/background/build && rm -rf src/browser_action/build && webpack --config webpack.config.prod.js",
     "zip": "npm run build:prod && cp manifest.json manifest.dev.json && cp manifest.prod.json manifest.json && cd .. && zip -r paiyun-auto-apply.zip chrome-extension/src chrome-extension/icon128.png chrome-extension/manifest.json && mv paiyun-auto-apply.zip chrome-extension && cd chrome-extension && cp manifest.dev.json manifest.json && rm manifest.dev.json"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.15"
+  },
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",

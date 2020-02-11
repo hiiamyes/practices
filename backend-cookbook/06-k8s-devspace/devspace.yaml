@@ -1,0 +1,18 @@
+version: v1beta6
+deployments:
+  - name: be-06
+    kubectl:
+      manifests:
+        - services.yaml
+dev:
+  ports:
+    - labelSelector:
+        app: api
+      forward:
+        - port: 3002
+          remotePort: 3002
+  sync:
+    - labelSelector:
+        app: api
+      localSubPath: ./services/api/src
+      containerPath: /app/src
