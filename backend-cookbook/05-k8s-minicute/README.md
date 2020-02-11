@@ -17,7 +17,13 @@ Start
 ./start.sh
 ```
 
-Port Forward
+Check the result
+
+```
+open http://$(minikube ip):30003
+```
+
+Port Forward (No needed!)
 
 ```
 kubectl port-forward service/api-service 3002
