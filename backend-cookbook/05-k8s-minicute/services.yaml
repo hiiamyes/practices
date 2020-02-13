@@ -62,5 +62,5 @@ spec:
 #         paths:
 #           - path: /
 #             backend:
-#               serviceName: api-servicegit
+#               serviceName: api-service
 #               servicePort: 3002
