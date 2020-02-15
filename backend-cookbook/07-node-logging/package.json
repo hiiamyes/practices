@@ -1,0 +1,15 @@
+{
+  "name": "07-node-logging",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "./script/start.sh"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.2",
+    "pino": "^5.16.0",
+    "pino-pretty": "^3.6.0",
+    "pino-tee": "^0.3.0"
+  }
+}
