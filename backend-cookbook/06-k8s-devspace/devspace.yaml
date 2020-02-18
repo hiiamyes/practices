@@ -1,6 +1,6 @@
 version: v1beta6
 deployments:
-  - name: 06-k8s-devspace
+  - name: be-06
     kubectl:
       manifests:
         - services.yaml

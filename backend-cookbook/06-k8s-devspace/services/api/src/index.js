@@ -1,9 +1,8 @@
 const express = require("express");
 const app = express();
-console.log(process.env.FOO);
 
 app.get("/", (req, res) => {
-  res.json("pongggg");
+  res.json("pongg");
 });
 
 app.listen(process.env.PORT, () =>
