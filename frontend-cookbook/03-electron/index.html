@@ -41,6 +41,11 @@
       <input id="height" />
     </div>
     <br />
+    <div>
+      <label>Compress (%):</label>
+      <input id="compress" />
+    </div>
+    <br />
     <button id="process">Process</button>
     <span id="status"></span>
     <script>
@@ -52,6 +57,7 @@
 
       document.getElementById("width").defaultValue = "400";
       document.getElementById("height").defaultValue = "400";
+      document.getElementById("compress").defaultValue = "50";
 
       document.getElementById("files").addEventListener(
         "change",
@@ -72,27 +78,38 @@
               return;
             }
             const w = +document.getElementById("width").value;
-            if (!w) {
-              alert("No w");
-              return;
-            }
+            // if (!w) {
+            // alert("No width");
+            // return;
+            // }
             const h = +document.getElementById("height").value;
-            if (!h) {
-              alert("No h");
-              return;
-            }
+            // if (!h) {
+            // alert("No height");
+            // return;
+            // }
+            const compress = +document.getElementById("compress").value;
+            // if (!compress) {
+            // alert("No compress");
+            // return;
+            // }
             document.getElementById("status").innerText = "Processing...";
             const inputs = fs.readdirSync(folder);
             for (let i = 0; i < inputs.length; i++) {
               const input = inputs[i];
               if (!/.jpg|.png/gi.test(input)) continue;
               const input2 = await jimp.read(path.resolve(folder, input));
+              let output = input2;
               const {
                 bitmap: { width, height },
               } = input2;
-              const x = width / 2 - w / 2;
-              const y = height / 2 - h / 2;
-              const output = input2.crop(x, y, w, h);
+              if (w && h) {
+                const x = width / 2 - w / 2;
+                const y = height / 2 - h / 2;
+                output = output.crop(x, y, w, h);
+              }
+              if (compress) {
+                output = output.scale(compress / 100);
+              }
               output.write(
                 path.resolve(folder, input.split(".").join("-crop."))
               );
