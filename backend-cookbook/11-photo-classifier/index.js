@@ -12,7 +12,7 @@ const q = fs
     // const date = dayjs(
     //   file.replace(/.jpg|.png|.pef/gi, "").replace(".", ":")
     // ).format("YYYY-MM-DD");
-    const date = file.split(" ")[0];
+    const date = dayjs(file.split(" ")[0]).format('YYYY-MMDD');
     return {
       date,
       file,
