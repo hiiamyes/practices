@@ -4,7 +4,7 @@
 
 ```
 yarn
-yarn run dev
+yarn dev
 ```
 
 ## Distribution

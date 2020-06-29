@@ -42,8 +42,8 @@
     </div>
     <br />
     <div>
-      <label>Compress (%):</label>
-      <input id="compress" />
+      <label>JPEG Quality (0-100):</label>
+      <input id="quality" />
     </div>
     <br />
     <button id="process">Process</button>
@@ -57,7 +57,7 @@
 
       document.getElementById("width").defaultValue = "400";
       document.getElementById("height").defaultValue = "400";
-      document.getElementById("compress").defaultValue = "50";
+      document.getElementById("quality").defaultValue = "50";
 
       document.getElementById("files").addEventListener(
         "change",
@@ -87,9 +87,9 @@
             // alert("No height");
             // return;
             // }
-            const compress = +document.getElementById("compress").value;
-            // if (!compress) {
-            // alert("No compress");
+            const quality = +document.getElementById("quality").value;
+            // if (!quality) {
+            // alert("No quality");
             // return;
             // }
             document.getElementById("status").innerText = "Processing...";
@@ -107,12 +107,11 @@
                 const y = height / 2 - h / 2;
                 output = output.crop(x, y, w, h);
               }
-              if (compress) {
-                output = output.scale(compress / 100);
+              if (quality) {
+                // output = output.scale(compress / 100);
+                output = output.quality(quality);
               }
-              output.write(
-                path.resolve(folder, input.split(".").join("-crop."))
-              );
+              output.write(path.resolve(folder, `crop-${input}`));
             }
           } catch (error) {
             alert(error);
