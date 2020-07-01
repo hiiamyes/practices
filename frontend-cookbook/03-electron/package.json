@@ -1,0 +1,25 @@
+{
+  "name": "03-electron",
+  "description": "This is a image processor.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Yes Lee",
+    "email": "joshuayes@gmail.com",
+    "url": "https://yeslee.me"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "electron index.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^9.0.0",
+    "electron-builder": "^22.6.1"
+  },
+  "dependencies": {
+    "jimp": "^0.12.1"
+  }
+}

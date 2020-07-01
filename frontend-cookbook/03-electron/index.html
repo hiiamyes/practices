@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Image Processor</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'unsafe-inline';"
+    />
+  </head>
+  <body>
+    <h1>Image Processor</h1>
+    <div>
+      <label
+        for="files"
+        style="
+          border: 1px solid grey;
+          padding: 5px;
+          border-radius: 5px;
+          cursor: pointer;
+        "
+        >Select a folder</label
+      >
+      <input
+        id="files"
+        type="file"
+        style="visibility: hidden; width: 0px;"
+        webkitdirectory
+      />
+      <span>:</span>
+      <span id="path"></span>
+    </div>
+    <br />
+    <div>
+      <label>Width (px):</label>
+      <input id="width" />
+    </div>
+    <br />
+    <div>
+      <label>Height (px):</label>
+      <input id="height" />
+    </div>
+    <br />
+    <div>
+      <label>Compress (%):</label>
+      <input id="compress" />
+    </div>
+    <br />
+    <button id="process">Process</button>
+    <span id="status"></span>
+    <script>
+      const { app, BrowserWindow, remote } = require("electron");
+      const fs = require("fs");
+      const path = require("path");
+      const jimp = require("jimp");
+      const log = console.log;
+
+      document.getElementById("width").defaultValue = "400";
+      document.getElementById("height").defaultValue = "400";
+      document.getElementById("compress").defaultValue = "50";
+
+      document.getElementById("files").addEventListener(
+        "change",
+        async (e) => {
+          const { name, path } = e.target.files[0];
+          document.getElementById("path").innerText = path.replace(name, "");
+        },
+        false
+      );
+
+      document.getElementById("process").addEventListener(
+        "click",
+        async () => {
+          try {
+            const folder = document.getElementById("path").innerText;
+            if (!folder) {
+              alert("No folder");
+              return;
+            }
+            const w = +document.getElementById("width").value;
+            // if (!w) {
+            // alert("No width");
+            // return;
+            // }
+            const h = +document.getElementById("height").value;
+            // if (!h) {
+            // alert("No height");
+            // return;
+            // }
+            const compress = +document.getElementById("compress").value;
+            // if (!compress) {
+            // alert("No compress");
+            // return;
+            // }
+            document.getElementById("status").innerText = "Processing...";
+            const inputs = fs.readdirSync(folder);
+            for (let i = 0; i < inputs.length; i++) {
+              const input = inputs[i];
+              if (!/.jpg|.png/gi.test(input)) continue;
+              const input2 = await jimp.read(path.resolve(folder, input));
+              let output = input2;
+              const {
+                bitmap: { width, height },
+              } = input2;
+              if (w && h) {
+                const x = width / 2 - w / 2;
+                const y = height / 2 - h / 2;
+                output = output.crop(x, y, w, h);
+              }
+              if (compress) {
+                output = output.scale(compress / 100);
+              }
+              output.write(
+                path.resolve(folder, input.split(".").join("-crop."))
+              );
+            }
+          } catch (error) {
+            alert(error);
+          } finally {
+            document.getElementById("status").innerText = "Finished";
+          }
+        },
+        false
+      );
+    </script>
+  </body>
+</html>

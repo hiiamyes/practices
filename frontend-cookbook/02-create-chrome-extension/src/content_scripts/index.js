@@ -11,12 +11,13 @@ const App = () => {
       if (location.search !== "") {
         const type = /f=(\w+)&?/.exec(location.search)[1];
         const dls = document.querySelectorAll(".results dl");
-        Array.prototype.forEach.call(dls, function(dl) {
+        Array.prototype.forEach.call(dls, function (dl) {
           const link = dl.querySelector("dt a");
           const name = link.text;
           let [_, date, size] = dl.querySelectorAll("dd span");
           size = size.textContent;
           const [amount, unit] = size.split(" ");
+          console.log(name, link.href, date.textContent, size);
           if (unit === "MB" && +amount > 5000) {
             if (type === "ssni" && /ssni-(\d\d\d)/i.test(name)) {
               const [_, number] = /ssni-(\d\d\d)/i.exec(name);
@@ -45,8 +46,52 @@ const App = () => {
                 window.open(link.href);
               }
             }
+            if (type === "svdvd" && /svdvd-(\d\d\d)/i.test(name)) {
+              const [_, number] = /svdvd-(\d\d\d)/i.exec(name);
+              if (number) {
+                window.open(
+                  `https://ec.sod.co.jp/prime/videos/?id=SVDVD-${number}`
+                );
+                window.open(link.href);
+              }
+            }
+            if (type === "star" && /star-(\d\d\d)/i.test(name)) {
+              const [_, number] = /star-(\d\d\d)/i.exec(name);
+              if (number) {
+                window.open(
+                  `https://ec.sod.co.jp/prime/videos/?id=STAR-${number}`
+                );
+                window.open(link.href);
+              }
+            }
+            if (type === "sdmu" && /sdmu-(\d\d\d)/i.test(name)) {
+              const [_, number] = /sdmu-(\d\d\d)/i.exec(name);
+              if (number) {
+                window.open(
+                  `https://ec.sod.co.jp/prime/videos/?id=SDMU-${number}`
+                );
+                window.open(link.href);
+              }
+            }
+            if (type === "kmhr" && /kmhr-(\d\d\d)/i.test(name)) {
+              const [_, number] = /kmhr-(\d\d\d)/i.exec(name);
+              if (number) {
+                window.open(
+                  `https://ec.sod.co.jp/prime/videos/?id=KMHR-${number}`
+                );
+                window.open(link.href);
+              }
+            }
+            if (type === "mide" && /mide-(\d\d\d)/i.test(name)) {
+              const [_, number] = /mide-(\d\d\d)/i.exec(name);
+              if (number) {
+                window.open(
+                  `https://www.moodyz.com/works/detail/mide${number}/`
+                );
+                window.open(link.href);
+              }
+            }
           }
-          console.log(name, link.href, date.textContent, size);
         });
       }
     } catch (error) {
