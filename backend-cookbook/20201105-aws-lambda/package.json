@@ -1,0 +1,10 @@
+{
+  "name": "20201105-aws-lambda",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "serverless": "^2.10.0"
+  }
+}
