@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "create": "serverless create --template aws-nodejs",
+    "info": "serverless info",
+    "deploy": "serverless deploy",
+    "invoke": "serverless invoke -f hello"
+  },
   "dependencies": {},
   "devDependencies": {
     "serverless": "^2.10.0"
