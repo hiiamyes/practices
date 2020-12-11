@@ -11,7 +11,7 @@ const App = () => {
       if (location.search !== "") {
         const type = /f=(\w+)&?/.exec(location.search)[1];
         const dls = document.querySelectorAll(".results dl");
-        Array.prototype.forEach.call(dls, function(dl) {
+        Array.prototype.forEach.call(dls, function (dl) {
           const link = dl.querySelector("dt a");
           const name = link.text;
           let [_, date, size] = dl.querySelectorAll("dd span");
