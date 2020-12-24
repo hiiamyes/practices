@@ -1,0 +1,20 @@
+service: aws-lambda-image-resizer
+frameworkVersion: "2"
+provider:
+  name: aws
+  runtime: nodejs12.x
+  profile: yeeeeees
+  region: us-east-1
+
+# you can overwrite defaults here
+#  stage: dev
+#  region: us-east-1
+
+functions:
+  resize:
+    handler: handler.resize
+    events:
+      - s3:
+          bucket: 2020-1224-aws-lambda-image-resizer
+          event: s3:ObjectCreated:*
+          existing: true

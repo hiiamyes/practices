@@ -1,13 +1,17 @@
 {
-  "name": "20201105-aws-lambda",
+  "name": "2020-1224-aws-lambda-image-resize",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "create": "serverless create --template aws-nodejs",
+    "package": "serverless package",
     "info": "serverless info",
+    "invoke:local": "serverless invoke local -f resize",
+    "invoke": "serverless invoke -f resize",
     "deploy": "serverless deploy",
-    "invoke": "serverless invoke -f hello"
+    "remove": "serverless remove",
+    "logs": "serverless logs -f resize"
   },
   "dependencies": {},
   "devDependencies": {
