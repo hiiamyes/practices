@@ -10,9 +10,9 @@
     "info": "serverless info",
     "invoke:local": "serverless invoke local -f resize",
     "invoke": "serverless invoke -f resize",
-    "deploy": "serverless deploy",
+    "deploy": "serverless deploy --config serverless.production.yml",
     "remove": "serverless remove",
-    "logs": "serverless logs -f resize"
+    "logs": "serverless logs --tail --function resize"
   },
   "devDependencies": {
     "serverless": "^2.10.0",
@@ -21,6 +21,6 @@
   },
   "dependencies": {
     "aws-sdk": "^2.817.0",
-    "sharp": "^0.27.0"
+    "jimp": "^0.16.1"
   }
 }

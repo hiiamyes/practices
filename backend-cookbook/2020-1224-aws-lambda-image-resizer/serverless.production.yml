@@ -5,16 +5,9 @@ provider:
   runtime: nodejs12.x
   profile: yeeeeees
   region: us-east-1
-plugins:
-  - serverless-s3-local
-  - serverless-offline
-custom:
-  s3:
-    host: localhost
-    directory: ./tmp
 resources:
   Resources:
-    NewResource:
+    resizeImagesBucket:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: 2020-1224-aws-lambda-image-resizer-resize-images
