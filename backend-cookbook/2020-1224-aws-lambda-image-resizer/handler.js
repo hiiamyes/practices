@@ -1,6 +1,49 @@
 "use strict";
 
-module.exports.resize = async (event) => {
+const aws = require("aws-sdk");
+const s3 = new aws.S3({
+  apiVersion: "2006-03-01",
+  s3ForcePathStyle: true,
+
+  accessKeyId: "S3RVER", // This specific key is required when working offline
+  secretAccessKey: "S3RVER",
+  endpoint: new aws.Endpoint("http://localhost:4569"),
+});
+const sharp = require("sharp");
+console.log("setup");
+/**
+ *
+ * @param {s3 event} event
+ * https://docs.aws.amazon.com/lambda/latest/dg/with-s3.html
+ */
+module.exports.resize = async (event, context) => {
+  // console.log(event);
+  // console.log(context);
+  // console.log(event.Records[0].s3.object);
+  const bucket = event.Records[0].s3.bucket;
+  const object = event.Records[0].s3.object;
+  // get object
+  // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#getObject-property
+  const srcImage = await s3
+    .getObject({
+      Bucket: bucket.name,
+      Key: object.key,
+    })
+    .promise();
+  // console.log("src: ", srcImage);
+  const destImage = await sharp(srcImage.Body)
+    .resize({ width: 320 })
+    .toBuffer();
+  // put object
+  // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#putObject-property
+  // console.log("dest: ", destImage);
+  await s3
+    .putObject({
+      Body: destImage,
+      Bucket: 'resize-images',
+      Key: `${object.key.split(".")[0]}-w300.${object.key.split(".")[1]}`,
+    })
+    .promise();
   return {
     statusCode: 200,
     body: JSON.stringify(

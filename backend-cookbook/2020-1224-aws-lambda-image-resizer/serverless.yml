@@ -5,11 +5,19 @@ provider:
   runtime: nodejs12.x
   profile: yeeeeees
   region: us-east-1
-
-# you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
-
+plugins:
+  - serverless-s3-local
+  - serverless-offline
+custom:
+  s3:
+    host: localhost
+    directory: ./tmp
+resources:
+  Resources:
+    NewResource:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: resize-images
 functions:
   resize:
     handler: handler.resize
@@ -18,3 +26,4 @@ functions:
           bucket: 2020-1224-aws-lambda-image-resizer
           event: s3:ObjectCreated:*
           existing: true
+
