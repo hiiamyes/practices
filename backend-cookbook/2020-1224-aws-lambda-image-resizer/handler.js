@@ -1,14 +1,19 @@
 "use strict";
-
+console.log(process.env.ENV);
 const aws = require("aws-sdk");
-const s3 = new aws.S3({
-  apiVersion: "2006-03-01",
-  s3ForcePathStyle: true,
-
-  accessKeyId: "S3RVER", // This specific key is required when working offline
-  secretAccessKey: "S3RVER",
-  endpoint: new aws.Endpoint("http://localhost:4569"),
-});
+const s3 = new aws.S3(
+  process.env.ENV === "production"
+    ? {
+        apiVersion: "2006-03-01",
+      }
+    : {
+        apiVersion: "2006-03-01",
+        s3ForcePathStyle: true,
+        accessKeyId: "S3RVER", // This specific key is required when working offline
+        secretAccessKey: "S3RVER",
+        endpoint: new aws.Endpoint("http://localhost:4569"),
+      }
+);
 // const sharp = require("sharp");
 const jimp = require("jimp");
 /**

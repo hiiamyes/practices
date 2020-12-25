@@ -5,6 +5,8 @@ provider:
   runtime: nodejs12.x
   profile: yeeeeees
   region: us-east-1
+  environment:
+    ENV: local
 plugins:
   - serverless-s3-local
   - serverless-offline
@@ -26,4 +28,3 @@ functions:
           bucket: 2020-1224-aws-lambda-image-resizer
           event: s3:ObjectCreated:*
           existing: true
-
