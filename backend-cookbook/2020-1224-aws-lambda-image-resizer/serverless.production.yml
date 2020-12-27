@@ -7,6 +7,15 @@ provider:
   region: us-east-1
   environment:
     ENV: production
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "s3:GetObject"
+      Resource: "arn:aws:s3:::2020-1224-aws-lambda-image-resizer/*"
+    - Effect: "Allow"
+      Action:
+        - "s3:PutObject"
+      Resource: "arn:aws:s3:::2020-1224-aws-lambda-image-resizer-resize-images/*"
 resources:
   Resources:
     resizeImagesBucket:
@@ -21,4 +30,3 @@ functions:
           bucket: 2020-1224-aws-lambda-image-resizer
           event: s3:ObjectCreated:*
           existing: true
-

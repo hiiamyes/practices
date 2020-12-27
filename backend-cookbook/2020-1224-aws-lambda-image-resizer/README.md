@@ -28,6 +28,8 @@ aws s3 cp ./image.jpg s3://2020-1224-aws-lambda-image-resizer/image.jpg --profil
 
 ## Reference
 
+https://www.serverless.com/blog/dynamic-image-resizing-nodejs
+
 - [serverless](https://github.com/serverless/serverless)
 - [cloudwatch event](https://www.serverless.com/framework/docs/providers/aws/events/cloudwatch-event/)
 - [google api service account](https://cloud.google.com/docs/authentication/production)
