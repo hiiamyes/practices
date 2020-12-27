@@ -5,6 +5,7 @@ provider:
   runtime: nodejs12.x
   profile: yeeeeees
   region: us-east-1
+  timeout: 20
   environment:
     ENV: production
   iamRoleStatements:
