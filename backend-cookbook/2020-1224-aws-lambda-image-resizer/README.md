@@ -10,7 +10,7 @@ yarn
 yarn run package
 yarn run invoke:local
 yarn run dev
-aws --endpoint http://localhost:4569 s3 cp ./image.jpg s3://2020-1224-aws-lambda-image-resizer/image.jpg --profile s3local
+aws --endpoint http://localhost:4569 s3 cp ./image.jpg s3://images/originals/image.jpg --profile s3local
 ```
 
 ## Deployment

@@ -3,8 +3,6 @@ frameworkVersion: "2"
 provider:
   name: aws
   runtime: nodejs12.x
-  profile: s3local
-  region: us-east-1
   environment:
     ENV: local
 plugins:
@@ -14,17 +12,13 @@ custom:
   s3:
     host: localhost
     directory: ./tmp
-resources:
-  Resources:
-    NewResource:
-      Type: AWS::S3::Bucket
-      Properties:
-        BucketName: 2020-1224-aws-lambda-image-resizer-resize-images
 functions:
   resize:
     handler: handler.resize
     events:
       - s3:
-          bucket: image
+          bucket: images
           event: s3:ObjectCreated:*
           existing: true
+          rules:
+            - prefix: originals/
