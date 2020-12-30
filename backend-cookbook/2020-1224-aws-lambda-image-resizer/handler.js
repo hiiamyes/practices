@@ -1,5 +1,6 @@
 "use strict";
 const aws = require("aws-sdk");
+const jimp = require("jimp");
 const s3 = new aws.S3(
   process.env.ENV === "production"
     ? {
@@ -13,7 +14,6 @@ const s3 = new aws.S3(
         endpoint: new aws.Endpoint("http://localhost:4569"),
       }
 );
-const jimp = require("jimp");
 /**
  * @param {s3 event} event
  * https://docs.aws.amazon.com/lambda/latest/dg/with-s3.html
