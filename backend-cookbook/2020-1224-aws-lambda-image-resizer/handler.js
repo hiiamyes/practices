@@ -20,11 +20,13 @@ const jimp = require("jimp");
  */
 module.exports.resize = async (event, context) => {
   try {
+    console.log("resize start");
     const bucket = event.Records[0].s3.bucket;
     const object = event.Records[0].s3.object;
     const [_match, _filePath, fileName, fileType] = /(.*\/)?(\w*).(\w*$)/g.exec(
       object.key
     );
+    console.log("get object");
     const srcImage = await s3
       .getObject({
         // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#getObject-property
@@ -35,6 +37,7 @@ module.exports.resize = async (event, context) => {
     let destImage = await jimp.read(srcImage.Body);
     await destImage.resize(320, jimp.AUTO);
     destImage = await destImage.getBufferAsync(jimp.MIME_JPEG);
+    console.log("put object");
     await s3
       .putObject({
         // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#putObject-property
@@ -44,6 +47,7 @@ module.exports.resize = async (event, context) => {
         Key: ["resizeds/", fileName, ".", fileType].join(""),
       })
       .promise();
+    console.log("success");
     return {
       statusCode: 200,
       body: JSON.stringify(
