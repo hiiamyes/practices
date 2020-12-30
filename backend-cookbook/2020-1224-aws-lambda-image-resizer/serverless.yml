@@ -1,9 +1,9 @@
-service: aws-lambda-image-resizer
+service: image-resizer
 frameworkVersion: "2"
 provider:
   name: aws
   runtime: nodejs12.x
-  profile: yeeeeees
+  profile: s3local
   region: us-east-1
   environment:
     ENV: local
@@ -25,6 +25,6 @@ functions:
     handler: handler.resize
     events:
       - s3:
-          bucket: 2020-1224-aws-lambda-image-resizer
+          bucket: image
           event: s3:ObjectCreated:*
           existing: true
