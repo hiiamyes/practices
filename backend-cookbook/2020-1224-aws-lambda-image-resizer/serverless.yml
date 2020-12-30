@@ -19,6 +19,5 @@ functions:
       - s3:
           bucket: images
           event: s3:ObjectCreated:*
-          existing: true
           rules:
             - prefix: originals/

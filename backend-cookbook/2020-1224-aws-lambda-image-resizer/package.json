@@ -10,7 +10,7 @@
     "info": "serverless info",
     "invoke:local": "serverless invoke local -f resize",
     "invoke": "serverless invoke -f resize",
-    "deploy": "serverless deploy --config serverless.production.yml",
+    "deploy": "serverless deploy --config serverless.prod.yml",
     "remove": "serverless remove",
     "logs": "serverless logs --tail --function resize"
   },

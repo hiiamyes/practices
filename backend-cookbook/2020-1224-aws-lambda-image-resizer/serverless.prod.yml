@@ -30,6 +30,6 @@ functions:
       - s3:
           bucket: 2020-1224-image-resizer
           event: s3:ObjectCreated:*
-          existing: true
+          # existing: true
           rules:
             - prefix: originals/
