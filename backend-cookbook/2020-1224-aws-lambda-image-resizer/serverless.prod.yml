@@ -17,12 +17,12 @@ provider:
       Action:
         - "s3:PutObject"
       Resource: "arn:aws:s3:::image-resizer/*"
-# resources:
-#   Resources:
-#     resizeImagesBucket:
-#       Type: AWS::S3::Bucket
-#       Properties:
-#         BucketName: image-resizer
+resources:
+  Resources:
+    imageResizerBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: image-resizer
 functions:
   resize:
     handler: handler.resize
