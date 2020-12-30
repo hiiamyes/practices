@@ -42,7 +42,7 @@ module.exports.resize = async (event, context) => {
       .putObject({
         // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#putObject-property
         Body: destImage,
-        Bucket: "images",
+        Bucket: bucket.name,
         ContentType: srcImage.ContentType,
         Key: ["resizeds/", fileName, ".", fileType].join(""),
       })
