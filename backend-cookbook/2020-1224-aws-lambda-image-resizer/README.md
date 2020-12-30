@@ -23,7 +23,7 @@ yarn run deploy
 
 ```
 yarn run logs
-aws s3 cp ./image.jpg s3://2020-1224-aws-lambda-image-resizer/image.jpg --profile yeeeeees
+aws s3 cp ./image.jpg s3://image-resizer/originals/image.jpg --profile yeeeeees
 ```
 
 ## Reference
