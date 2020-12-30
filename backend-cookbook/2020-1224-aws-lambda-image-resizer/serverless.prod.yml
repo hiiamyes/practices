@@ -1,4 +1,4 @@
-service: 2020-1224-image-resizer
+service: image-resizer
 frameworkVersion: "2"
 provider:
   name: aws
@@ -12,23 +12,23 @@ provider:
     - Effect: "Allow"
       Action:
         - "s3:GetObject"
-      Resource: "arn:aws:s3:::2020-1224-image-resizer/*"
+      Resource: "arn:aws:s3:::image-resizer/*"
     - Effect: "Allow"
       Action:
         - "s3:PutObject"
-      Resource: "arn:aws:s3:::2020-1224-image-resizer/*"
+      Resource: "arn:aws:s3:::image-resizer/*"
 # resources:
 #   Resources:
 #     resizeImagesBucket:
 #       Type: AWS::S3::Bucket
 #       Properties:
-#         BucketName: 2020-1224-image-resizer
+#         BucketName: image-resizer
 functions:
   resize:
     handler: handler.resize
     events:
       - s3:
-          bucket: 2020-1224-image-resizer
+          bucket: image-resizer
           event: s3:ObjectCreated:*
           # existing: true
           rules:
