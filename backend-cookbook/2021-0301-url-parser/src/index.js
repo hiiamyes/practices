@@ -14,7 +14,7 @@ const puppeteer = require("puppeteer");
       }
     )
     for (const number of numbers) {
-      const url = `${process.env.DESTINATION_URL}/${href.replace(process.env.REPLACE, '')}/`;
+      const url = `${process.env.DESTINATION_URL}/${number}/`;
       // console.log(url)
       await open(url)
     }
