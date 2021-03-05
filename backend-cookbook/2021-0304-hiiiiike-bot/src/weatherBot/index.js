@@ -2,10 +2,10 @@ const { WebClient } = require("@slack/web-api");
 const listWeathers = require('../weathers/listWeathers')
 const slackWebClient = new WebClient(process.env.SLACK_BOT_USER_OAUTH_TOKEN);
 
-const weatherBot = async (event, context, callback) => {
+const weatherBot = async (event, _context, callback) => {
     try {
         console.log('weather bot')
-        console.log(event, context, callback)
+        console.log(event)
         const { headers } = event;
         const {
             event: { subtype, text, channel },
