@@ -7,10 +7,17 @@ provider:
   profile: yeeeeees
   region: ap-northeast-1
   timeout: 20
+  logs:
+    restApi: true
 plugins:
   - serverless-offline
+  - serverless-dotenv-plugin
 functions:
-  weather:
-    handler: handler.weather
+  weathers:
+    handler: handler.weathers
     events:
-      - http: GET /weather
+      - http: GET /weathers
+  weatherBot:
+    handler: handler.weatherBot
+    events:
+      - http: POST /weather/bot

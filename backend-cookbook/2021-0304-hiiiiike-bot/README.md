@@ -13,7 +13,7 @@ yarn dev
 ```
 
 ```
-curl http://localhost:3000/dev/weather
+curl http://localhost:3000/dev/weathers
 ```
 
 ## Deployment
