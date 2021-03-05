@@ -1,0 +1,24 @@
+{
+  "name": "2021-0304-hiiiike-weather-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "serverless offline",
+    "create": "serverless create --template aws-nodejs",
+    "package": "serverless package",
+    "info": "serverless info",
+    "invoke:local": "serverless invoke local -f resize",
+    "invoke": "serverless invoke -f resize",
+    "deploy": "serverless deploy --config serverless.prod.yml",
+    "remove": "serverless remove",
+    "logs": "serverless logs --tail --function resize"
+  },
+  "devDependencies": {
+    "serverless": "^2.10.0",
+    "serverless-offline": "^6.8.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.817.0"
+  }
+}
