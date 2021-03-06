@@ -20,11 +20,13 @@ const regexp = require('./regexp');
         }
       }
     )
-    for (const number of compact(numbers)) {
+    for (let i = 0; i < 15; i++) {
+      const number = compact(numbers)[i]
       const url = `${process.env.DESTINATION_URL}/${number}/`;
       // console.log(url)
       await open(url)
     }
+
   } catch (error) {
     console.log(error);
   } finally {
