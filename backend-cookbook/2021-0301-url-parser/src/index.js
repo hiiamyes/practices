@@ -4,7 +4,9 @@ const puppeteer = require("puppeteer");
 const { compact } = require("lodash/fp");
 const regexp = require("./regexp");
 
-const COUNT = 30(async () => {
+const COUNT = 30;
+
+(async () => {
   const browser = await puppeteer.launch();
   try {
     const page = await browser.newPage();
