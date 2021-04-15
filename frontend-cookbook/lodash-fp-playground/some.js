@@ -2,6 +2,7 @@ const { some, includes } = require("lodash/fp");
 
 const paths = ["/nodes", "/paths", "/m/nodes"];
 
+console.log(some(includes("/nodes/123"))(paths));
 console.log(some(includes("/nodes/123"), paths));
 console.log(
   some((qq) => {
