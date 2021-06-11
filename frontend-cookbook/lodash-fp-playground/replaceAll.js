@@ -1,3 +1,4 @@
+// nodejs 15 up
 const src = "send an $$$email$$$, yes $$$grinning$$$";
 
 const d1 = [...src.matchAll(/(\${3}[^$]+\${3})/g)];
