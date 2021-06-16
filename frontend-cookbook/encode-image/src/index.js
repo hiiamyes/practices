@@ -1,10 +1,11 @@
 const fs = require("fs");
 const path = require("path");
+const mime = require("mime-types");
 const image = fs.readFileSync(path.resolve(__dirname, "./image.jpg"));
-fs.writeFileSync("image-base64.txt", image.toString("base64"));
+// console.log(image.)
 
-// const fileReader = new FileReader();
-// fileReader.onload = () => {
-//   fs.writeFileSync("image-base64-2.txt", fileReader.result);
-// };
-// fileReader.readAsDataURL(image);
+fs.writeFileSync("image-base64.txt", image.toString("base64"));
+fs.writeFileSync(
+  "image-base64-2.txt",
+  `data:${mime.lookup("./src/image.jpg")};base64,${image.toString("base64")}`,
+);
