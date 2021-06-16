@@ -15,6 +15,6 @@
     "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",
     "nodemon": "^1.18.8",
-    "redis": "^2.8.0"
+    "redis": "^3.1.1"
   }
 }
