@@ -7,7 +7,7 @@
     "start": "node src/create-url.js && ./src/upload.sh"
   },
   "dependencies": {
-    "aws-sdk": "^2.395.0",
+    "aws-sdk": "^2.814.0",
     "dotenv": "^6.2.0"
   }
 }
