@@ -24,6 +24,7 @@ const COUNT = 40;
         return null;
       }
     });
+    numbers.reverse();
     for (let i = 0; i < COUNT; i++) {
       const number = compact(numbers)[i];
       // const url = `${process.env.DESTINATION_URL}/${number}/`;
