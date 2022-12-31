@@ -26,7 +26,8 @@ const COUNT = 30;
     });
     for (let i = 0; i < COUNT; i++) {
       const number = compact(numbers)[i];
-      const url = `${process.env.DESTINATION_URL}/${number}/`;
+      // const url = `${process.env.DESTINATION_URL}/${number}/`;
+      const url = `${process.env.DESTINATION_URL}${number}`;
       // console.log(url)
       await open(url);
     }
