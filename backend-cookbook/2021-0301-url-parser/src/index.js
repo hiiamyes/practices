@@ -4,7 +4,7 @@ const puppeteer = require("puppeteer");
 const { compact } = require("lodash/fp");
 const regexp = require("./regexp");
 
-const COUNT = 40;
+const COUNT = 75;
 
 (async () => {
   const browser = await puppeteer.launch();
@@ -27,10 +27,13 @@ const COUNT = 40;
     numbers.reverse();
     for (let i = 0; i < COUNT; i++) {
       const number = compact(numbers)[i];
-      // const url = `${process.env.DESTINATION_URL}/${number}/`;
-      const url = `${process.env.DESTINATION_URL}${number}`;
+      if (!number) continue;
+      const url1 = `${process.env.DESTINATION_URL_1}${number}/`;
+      const url2 = `${process.env.DESTINATION_URL_2}${number}/`;
+      // const url = `${process.env.DESTINATION_URL}${number}`;
       // console.log(url)
-      await open(url);
+      await open(url1);
+      await open(url2);
     }
   } catch (error) {
     console.log(error);
