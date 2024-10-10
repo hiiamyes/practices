@@ -30,11 +30,12 @@ const COUNT = 75;
       if (!number) continue;
       const url1 = `${process.env.DESTINATION_URL_1}${number}/`;
       const url2 = `${process.env.DESTINATION_URL_2}${number}`;
+      const url3 = `${process.env.DESTINATION_URL_3}${number}`;
       // const url = `${process.env.DESTINATION_URL}${number}`;
       // console.log(url)
       // await open(url1);
       await new Promise((r) => setTimeout(() => r(), 300));
-      await open(url2);
+      await open(url3);
     }
   } catch (error) {
     console.log(error);
