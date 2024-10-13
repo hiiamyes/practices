@@ -5,10 +5,10 @@ const { compact } = require("lodash/fp");
 const regexp = require("./regexp");
 
 const COUNT = 75;
-
 (async () => {
-  const browser = await puppeteer.launch();
+  let browser;
   try {
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(process.env.SOURCE_URL);
     const numbers = (
@@ -24,6 +24,7 @@ const COUNT = 75;
         return null;
       }
     });
+    
     numbers.reverse();
     for (let i = 0; i < COUNT; i++) {
       const number = compact(numbers)[i];
@@ -33,8 +34,8 @@ const COUNT = 75;
       const url3 = `${process.env.DESTINATION_URL_3}${number}`;
       // const url = `${process.env.DESTINATION_URL}${number}`;
       // console.log(url)
-      // await open(url1);
       await new Promise((r) => setTimeout(() => r(), 300));
+      await open(url2);
       await open(url3);
     }
   } catch (error) {
